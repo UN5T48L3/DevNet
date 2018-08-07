@@ -11,7 +11,7 @@ class ProfileCreds extends Component {
         <p>
           <Moment format="YYYY/MM/DD">{exp.from}</Moment> -
           {exp.to === null ? (
-            ' Now'
+            ' Halen'
           ) : (
             <Moment format="YYYY/MM/DD">{exp.to}</Moment>
           )}
@@ -42,7 +42,7 @@ class ProfileCreds extends Component {
         <p>
           <Moment format="YYYY/MM/DD">{edu.from}</Moment> -
           {edu.to === null ? (
-            ' Now'
+            ' Halen'
           ) : (
             <Moment format="YYYY/MM/DD">{edu.to}</Moment>
           )}
