@@ -4,12 +4,15 @@ import { connect } from 'react-redux';
 import PostForm from './PostForm';
 import PostFeed from './PostFeed';
 import Spinner from '../common/Spinner';
-import { getPosts } from '../../actions/postActions';
+import { getPosts, getProfileByHandle } from '../../actions/postActions';
 
 class Posts extends Component {
   componentDidMount() {
     this.props.getPosts();
+    this.props.getProfileByHandle();
   }
+
+  
 
   render() {
     const { posts, loading } = this.props.post;
@@ -36,13 +39,18 @@ class Posts extends Component {
   }
 }
 
+
 Posts.propTypes = {
+  getProfileByHandle: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
   getPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired
 };
 
+
 const mapStateToProps = state => ({
-  post: state.post
+  post: state.post,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { getPosts })(Posts);
+export default connect(mapStateToProps, { getPosts, getProfileByHandle })(Posts);

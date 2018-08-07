@@ -69,7 +69,7 @@ class ProfileCreds extends Component {
           {expItems.length > 0 ? (
             <ul className="list-group">{expItems}</ul>
           ) : (
-            <p className="text-center">Deneyim Eklenmedi</p>
+            <p className="text-center">Henüz Deneyim Eklenmedi!</p>
           )}
         </div>
 
