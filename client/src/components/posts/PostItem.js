@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom';
-import {
-  deletePost,
-  addLike,
-  removeLike,
-  getProfileByHandle
-} from '../../actions/postActions';
+import { deletePost, addLike, removeLike } from '../../actions/postActions';
 
 class PostItem extends Component {
   onDeleteClick(id) {
@@ -33,18 +28,19 @@ class PostItem extends Component {
   }
 
   render() {
-    const { post, auth, showActions, profile } = this.props;
+    const { post, auth, showActions } = this.props;
 
     return (
       <div className="card card-body mb-3">
         <div className="row">
           <div className="col-md-2">
-            <Link to={`/profile/${profile.handle}`}>
+            <a href="profile.html">
               <img
                 className="rounded-circle d-none d-md-block"
                 src={post.avatar}
+                alt=""
               />
-            </Link>
+            </a>
             <br />
             <p className="text-center">{post.name}</p>
           </div>
@@ -92,8 +88,11 @@ class PostItem extends Component {
   }
 }
 
+PostItem.defaultProps = {
+  showActions: true
+};
+
 PostItem.propTypes = {
-  profile: PropTypes.object.isRequired,
   deletePost: PropTypes.func.isRequired,
   addLike: PropTypes.func.isRequired,
   removeLike: PropTypes.func.isRequired,
@@ -105,7 +104,6 @@ const mapStateToProps = state => ({
   auth: state.auth
 });
 
-export default connect(
-  mapStateToProps,
-  { deletePost, addLike, removeLike, getProfileByHandle }
-)(PostItem);
+export default connect(mapStateToProps, { deletePost, addLike, removeLike })(
+  PostItem
+);

@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import {
-  GET_PROFILE,
   ADD_POST,
   GET_ERRORS,
   CLEAR_ERRORS,
@@ -10,26 +9,6 @@ import {
   POST_LOADING,
   DELETE_POST
 } from './types';
-
-
-// Get profile by handle
-export const getProfileByHandle = handle => dispatch => {
-  dispatch(setPostLoading());
-  axios
-    .get(`/api/profile/handle/${handle}`)
-    .then(res =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data
-      })
-    )
-    .catch(err =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: null
-      })
-    );
-};
 
 // Add Post
 export const addPost = postData => dispatch => {
@@ -90,7 +69,7 @@ export const getPost = id => dispatch => {
 
 // Delete Post
 export const deletePost = id => dispatch => {
-  if (window.confirm('Silmek istediğinize emin misiniz?'))
+  if (window.confirm('Bu gönderiyi istediğinize emin misiniz?'))
   axios
     .delete(`/api/posts/${id}`)
     .then(res =>
@@ -154,7 +133,7 @@ export const addComment = (postId, commentData) => dispatch => {
 
 // Delete Comment
 export const deleteComment = (postId, commentId) => dispatch => {
-  if (window.confirm('Silmek istediğinize emin misiniz?'))
+  if (window.confirm('Bu yorumu silmek istediğinize emin misiniz?'))
   axios
     .delete(`/api/posts/comment/${postId}/${commentId}`)
     .then(res =>

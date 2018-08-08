@@ -18,14 +18,13 @@ const validatePostInput = require('../../validation/post');
 router.get('/test', (req, res) => res.json({msg: "Posts çalışıyor"}));
 
 // @route   GET api/posts
-// @desc    Get post
-// access   Public
+// @desc    Get posts
+// @access  Public
 router.get('/', (req, res) => {
-    Post.find()
-    .sort({date: -1})
+  Post.find()
+    .sort({ date: -1 })
     .then(posts => res.json(posts))
-    .catch(err => res.status(404).json({nopostsfound: 'Gönderiler bulunamadı' })
-    );
+    .catch(err => res.status(404).json({ nopostsfound: 'Gönderiler bulunamadı' }));
 });
 
 // @route   GET api/posts/:id
