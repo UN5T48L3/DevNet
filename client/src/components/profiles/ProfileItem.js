@@ -19,7 +19,7 @@ class ProfileItem extends Component {
             <p>
               {profile.status}{' '}
               {isEmpty(profile.company) ? null : (
-                <span>olarak çalıştığı şirket => {profile.company}</span>
+                <span>olarak çalıştığı şirket: {profile.company}</span>
               )}
             </p>
             <p>
