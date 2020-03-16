@@ -40,5 +40,4 @@ Before run server and client you have to create a file in config directory as `k
 
 
 
-##### If you want work together for developing this application to make better, please feel free and send pull request.
-###### Contact: iletisim@UN5T48L3.com
+
